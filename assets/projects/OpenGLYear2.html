@@ -43,22 +43,26 @@
 				<div class="inner">
 					<div class="box">
 						<div class="content">
+							<p>These two projects were my introduction to openGL and computer graphics in general. There are endless possibilities when it comes to draw things on the screen from games and simulations to drawing/modeling softwares and applications.</p>
+							<strong>Space Racing Game</strong>
+							<p>This game was completely developed in Legacy, the 20 year old api that doesn’t let me worry about code and maths behind. My only job was to call specific functions and it made me wonder how lighting works, what is culling or modelView matrix.</p>
+							<p>Of course, all these stuff are computed on the cpu side, so it doesn’t look as great as a AAA game.  The protagonist is a TIE Fighter (Because I like Star Wars) that needs to finish the race under the strict watch of the Emperor. Here is a video that shows some graphics techniques used in the game:</p>
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/eZ-rZbLTy7o" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+						
 							<p>
-								Pretty Engine is a modularised game engine written in C++. The user is capable of building multiplayer games with ease. The main features of the engine are: Entity-Component system ( the modularisation of the engine, it helps a great deal when writting an application ), Layering system allows
-								allows grouping entities and rendering them differently, 2D batch rendering ( very performant, the
-								future plan is to use this renderer for writting a particle system ), multiple randering APIs ( only
-								supports OpenGL at the moment, however, the architecture allows to easily incorporate other APIs.
-								DirectX and Vulkan are the next checkpoint ), data-driven level management using xml and 3D
-								asset importing using Assimp, Level Editor ( GUI made with dear ImGUI ), build system made with
-								premake (lua language), physics, audio and networking systems.
+								The source code of the game can be downloaded from here:
 							</p>
-							<p>
-								Future milestones of the project: Make a procedural generation project and include some functionality needed in the engine, (GPU) raytraced rendering for quality renders, AI module that allows
-								you to perform machine learning as well as traditional AI, switch to NVIDIA PhysX engine, better
-								networking system and better resource management
-							</p>
-							<a href="" class="button icon fa-github"> Source Code</a>
-							<a href="" class="button icon fa-download"> Download</a>
+							<p>	<a class="button icon fa-download" href="https://drive.google.com/open?id=1PD1xIt3gGTdc_baiA7gGhf0sHS8djaMz">Download</a></p>
+							
+						
+							<strong>Lawn Bowl Game</strong>
+							<p>Modern openGL open my eyes to what computer graphics actually means and it looks much prettier than the project above. This introduction to shaders revealed the whole rasterization pipeline from vertex to fragment shader.  </p>
+							<p>It was much more difficult as I had to handle this process of sending data to the gpu and manage to draw on the screen. . New things I came across like: matrices and how important they are, lighting models, mapping/texturing and more.</p>
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/NTOwGef32Yo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+							<p>My aim was to get closer to the creation of a Game Engine. The code was structured in the way I imagined a Game Engine.</p>
+							
+							<a class="button icon fa-download" href="https://drive.google.com/open?id=1rv6q4KfzLIc6rYROO8CWJtHmgg-BzVLE">Download</a>
+							
 						</div>
 					</div>
 				</div>
