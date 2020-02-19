@@ -1,0 +1,87 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>AI Blog</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../../css/main.css" />
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+		<header id="header">
+			<!--<div class="logo"><a href="index.html">Hielo <span>by TEMPLATED</span></a></div>-->
+			<a href="#menu">Menu</a>
+		</header>
+
+		<!-- Nav -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="../../../index.html">Home</a></li>
+				<li><a href="../../../about.html">About</a></li>
+				<li><a href="../../../CV_AlexandruZaharia.pdf">Download CV</a></li>
+			</ul>
+		</nav>
+
+		<!-- One -->
+		<section id="One" class="wrapper style3">
+			<div class="inner">
+				<header class="align-center">
+					
+					<h2>Task 1</h2>
+				</header>
+			</div>
+		</section>
+
+		<!-- Two -->
+		<section id="two" class="wrapper style2">
+			<div class="inner">
+				<div class="box">
+					<div class="content">
+						<!--<header class="align-center">
+		<p>maecenas sapien feugiat ex purus</p>
+		<h2>Lorem ipsum dolor</h2>
+	</header>-->
+						<p>
+							The two game demos present distinct AI implementations. The first demo, RWBodyGuards, has three AI characters surrounding the player. Each character is aware of what happens in its field of view. The bodyguards are procedurally placed around the player so that they cover all the pathways coming towards the player. If a wall is nearby one of the AIs will be assigned to a similar direction as the others. Several rays are cast from the guards towards the closest object, in this case a wall, and every so often the guards check each ray in a sequence. I believe that the number of rays depends on how far the previous ray has travelled, but there might be some elaborate decision making going on. I didn’t have the chance to see the bodyguards shooting or doing anything else. It is definitely a well-made AI system.
+						</p>
+						<div class="4u$"><span class="image fit"><img src="images/BodyGuards.jpg" alt="" /></span></div><br />
+						<p>
+							The second game is a hunting simulation which involves one predator and several preys. The prey seems to use a clever AI algorithm called boids. This algorithm is meant to simulate the flocking of birds. Each entity (boid) has to follow 3 rules: separation ( avoid crowding in the local group), alignment ( move towards the average heading of the group ) and cohesion ( move towards the average position of the group ). Besides these three, there is an additional goal which is survive by avoiding the predator. I believe the AI works based on a decision tree or a finite state machine which tell both the predator and the prey what state they should be in. Some of the states present in the predator’s thinking are STEALTH and HUNT (isolates one entity from the rest of the group) and these states are activated based on a set of rules, for example, hunt the closest prey which is farther from the rest of the group.
+						</p>
+						<div class="4u$"><span class="image fit"><img src="images/PredatorPrey.jpg" alt="" /></span></div><br />
+						<p>The video shows design practices which makes the AI look believable. These methods intend to give an edge to the player, however, I think the AI doesn’t always look intelligent. Making the NPC aware of the environment and have it say what it’s thinking is a good step in having a smart AI. If the enemy constantly miss the player doesn’t look like good AI in every scenario. Of course, this depends on the design and there should be a trade-off so the game is not boring and not too challenging.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="container">
+				<ul class="icons">
+					<!--<li><a href="#" class="icon fa-linkedin"><span class="label">Twitter</span></a></li>-->
+					<li><a href="https://github.com/cristi191096" class="icon fa-github"><span class="label">Github</span></a></li>
+					<li><a href="https://www.instagram.com/zaco._.o/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="mailto:alexandrucristinelzaharia@gmail.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+				</ul>
+			</div>
+			<div class="copyright">
+				&copy; All rights reserved.
+			</div>
+		</footer>
+
+		<!-- Scripts -->
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/jquery.scrollex.min.js"></script>
+		<script src="../../js/skel.min.js"></script>
+		<script src="../../js/util.js"></script>
+		<script src="../../js/main.js"></script>
+
+	</body>
+</html>

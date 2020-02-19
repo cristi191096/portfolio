@@ -1,0 +1,161 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>AI Blog</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../../css/main.css" />
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+		<header id="header">
+			<!--<div class="logo"><a href="index.html">Hielo <span>by TEMPLATED</span></a></div>-->
+			<a href="#menu">Menu</a>
+		</header>
+
+		<!-- Nav -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="../../../index.html">Home</a></li>
+				<li><a href="../../../about.html">About</a></li>
+				<li><a href="../../../CV_AlexandruZaharia.pdf">Download CV</a></li>
+			</ul>
+		</nav>
+
+		<!-- One -->
+		<section id="One" class="wrapper style3">
+			<div class="inner">
+				<header class="align-center">
+					<p>Wroarrr, Wrrroaaarr !!!!</p>
+					<h2>Zombie Tutorial</h2>
+				</header>
+			</div>
+		</section>
+
+		<!-- Two -->
+		<section id="two" class="wrapper style2">
+			<div class="inner">
+				<div class="box">
+					<div class="content">
+						<header class="align-center">
+							<!--<p>Last time modified: 09/02/2020</p>-->
+							<h2>Week 1</h2>
+						</header>
+						<p>First week is about setting up the project. For the course of this tutorial I will be using Unity 2019.2 and only Standard or free assets from the assets store. I opened a new empty project and imported the Standard Assets. What I didn’t take into consideration is that I only need the characters from this library so I could have imported those instead of the whole package. </p>
+						<p>The next step was to place my player and the AI in the scene. It is very curious that the player movement is affected by the main camera. Although the camera is attached to the character and untagged, the movement will not be the desired one. To fix both the movement and the camera clipping problem I have opted for a top-down view and made a script which tells the camera to follow the player. </p>
+
+						<p>Following the tutorial, I had to place some obstacles for the AI to avoid. For this step I wanted to make a level a bit more elaborate. I used a maze generator imported from the Asset Store in order to create the environment. Because the AI paths needs to be baked into the NavMesh and the maze is procedurally generated I couldn’t use it in this form, so I played the game and made a prefab out of the maze. Then I’ve made some small adjustments to my liking and baked the NavMesh. </p>
+						<p>The AI character needs a destination to go towards now, so the next step is to create a script that sets this target. At this stage in the tutorial the user controls where the AI goes which reminds me of the game mechanics in real-time strategy games such as Warcraft III, Starcraft, Dota. I intend to use this control for controlling the player. </p>
+						
+						<div class="4u$"><span class="image fit"><img src="images/ZT5.jpg" alt="" /></span></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<!-- One -->
+		<section id="three" class="wrapper style3">
+		
+		</section>
+
+		<!-- Two -->
+		<section id="four" class="wrapper style2">
+			<div class="inner">
+				<div class="box">
+					<div class="content">
+						<header class="align-center">
+							<!--<p>Last time modified: 09/02/2020</p>-->
+							<h2>Week 2</h2>
+						</header>
+						<p>This week’s mission is to build a Finite State Machine for the zombie. By the end of this week the enemy will be able to Chase, Wander and Die. I used an enum to consider the different the AI can be in. I placed a few Waypoints around the map so the zombie can pick and move towards the closest one. These points are stored in an array and shuffled so each time there is a unique path for the AI. </p>
+						<p>The next step is to change the default character, Ethan, with something more relevant. The tutorial suggests using Mixamo, however, I wanted to add more features to my game design, so I have chosen three characters from the Asset Store. One is the player, a Sci-fi robo-solider, then the zombie and, finally, the aid of the player which is a drone controlled by AI. </p>
+						<div class="4u$">
+							<span class="image fit"><img src="images/ZT1.jpg" alt="" /></span>
+							</div>
+						</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- One -->
+		<section id="five" class="wrapper style3">
+			
+		</section>
+
+		<!-- Two -->
+		<section id="six" class="wrapper style2">
+			<div class="inner">
+				<div class="box">
+					<div class="content">
+						<header class="align-center">
+							<!--<p>Last time modified: 09/02/2020</p>-->
+							<h2>Week 3</h2>
+						</header>
+						<p>In this week the zombie will receive sight and he’ll be able to see the player. The way we do that is by performing a raycast inside the Field of View of the AI. If the ray hits an object and the object is the player, the we return true and we change the state from WANDERING to CHASING.</p>
+
+						<p>Following the tutorial, I have added a DEATH state and mechanics. I have also added improvements to the game design, for example, a health system for the enemy and the player, enemy attack and player shooting, and now, both the player and the enemy can kill each other.</p>
+						<div class="4u$">
+							<span class="image fit"><img src="images/ZT2.jpg" alt="" /></span>
+						</div><br />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- One -->
+		<section id="seven" class="wrapper style3">
+			
+		</section>
+
+		<!-- Two -->
+		<section id="eight" class="wrapper style2">
+			<div class="inner">
+				<div class="box">
+					<div class="content">
+						<header class="align-center">
+							<!--<p>Last time modified: 09/02/2020</p>-->
+							<h2>Week 4</h2>
+						</header>
+						<p>In the final week, I have to create a gameplay for this AI project and the way suggested in the tutorial is by spawning a number of zombies at one of the Waypoints placed on the map and keep spawning them when they die. I disagree with the code in the tutorial because every frame it performs a search in order to count how many zombies are alive. It can be argued that for the purpose of this tutorial and the number of assets in the scene it works very well, however, it is bad practice to write inefficient code. My solution is to create a static variable called zombiesAlive ( aka nrZombiesExist ) and control the current number of zombies by subtracting 1 when it dies and adding 1 when a new enemy is spawned. This way I can remove the search completely because I know the number of zombies alive at any given time. </p>
+
+						<p>To further improve the performance of the game, I want to make use of Coroutines and add a Pooling system for the zombies. Coroutines help decrease the frequency of tasks performed which makes the game run faster with no drawbacks of making the AI less aware. For example, we can check if the zombie sees the player twice a second instead of 120 times a second and there would be no difference. Because creating new objects is a very expensive task for the CPU we can have a boost the performance by using a pooling system. It works by instantiating all objects at the beginning of the scene and activate them as necessary. When a zombie is spawned, rather the creating a new one, it picks one instance that is available and make it active. </p>
+						<div class="row 50% uniform">
+							<div class="4u$"><span class="image fit"><img src="images/ZT3.jpg" alt="" /></span></div>
+							<div class="4u$"><span class="image fit"><img src="images/ZT4.jpg" alt="" /></span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="container">
+				<ul class="icons">
+					<!--<li><a href="#" class="icon fa-linkedin"><span class="label">Twitter</span></a></li>-->
+					<li><a href="https://github.com/cristi191096" class="icon fa-github"><span class="label">Github</span></a></li>
+					<li><a href="https://www.instagram.com/zaco._.o/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="mailto:alexandrucristinelzaharia@gmail.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+				</ul>
+			</div>
+			<div class="copyright">
+				&copy; All rights reserved.
+			</div>
+		</footer>
+
+		<!-- Scripts -->
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/jquery.scrollex.min.js"></script>
+		<script src="../../js/skel.min.js"></script>
+		<script src="../../js/util.js"></script>
+		<script src="../../js/main.js"></script>
+
+	</body>
+</html>

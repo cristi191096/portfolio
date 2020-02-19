@@ -281,7 +281,7 @@ var settings = {
 
 		// Menu.
 			$('#menu')
-				.append('<a href="#menu" class="close"></a>')
+				//.append('<a href="#menu" class="close"></a>')
 				.appendTo($body)
 				.panel({
 					delay: 500,

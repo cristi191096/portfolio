@@ -1,0 +1,110 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>AI Blog</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../../css/main.css" />
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+		<header id="header">
+			
+			<a href="#menu">Menu</a>
+		</header>
+
+		<!-- Nav -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="../../../index.html">Home</a></li>
+				<li><a href="../../../about.html">About</a></li>
+				<li><a href="../../../CV_AlexandruZaharia.pdf">Download CV</a></li>
+			</ul>
+		</nav>
+
+		<!-- One -->
+		<section id="One" class="wrapper style3">
+			<div class="inner">
+				<header class="align-center">
+					<p>Final report</p>
+					<h2>Zombie Tutorial</h2>
+				</header>
+			</div>
+		</section>
+
+		<!-- Two -->
+		<section id="two" class="wrapper style2">
+			<div class="inner">
+				<div class="box">
+					<div class="content">
+						<!--Introduction-->
+
+						<h2><b>Introduction</b></h2>
+						<p>The zombie shooter tutorial contains a series of exercises which are meant to build a very basic action game with AI implementations. This report will explain the underlying principles of the AI techniques used and further improvements made to the initial stage of the game. </p>
+						<h2><b>Unity's Navigation system</b></h2>
+						<p>The enemies use the Unity Navigation system which is their built-in system for AI. The two major components of this system are the Navigation Mash (NavMesh) and the Agent (NavMeshAgent). The NavMesh represents the walkable are for the AI agents and it is made of a collection of convex polygons. When building the environment, we can decide what objects are going to be static and the polygons are generated around these objects. The main purpose of the NavMesh is to allow pathfinding. Using the A* algorithm, the shortest path between two points can be calculated in a directed graph such as the polygons inside the NavMesh. Once the shortest path is found, a steering algorithm helps the NavMeshAgent navigate to the destination.  Steering behaviours include: seeking, flee and arrival, collision avoidance, pursuit and evade, path following. Other components of the Navigation system are NavMeshObstacles and OffMeshLinks. The NaveMeshObstacle creates a virtual obstacle which doesn’t need to be baked into the NavMesh. The AI will be able to avoid it even if the position of the obstacle is changing during runtime. The OffMeshLink makes a bridge between two surfaces separated by a gap or a third mesh. For example, this link allows the AI to jump over small fences or open doors. </p>
+
+						<div class="4u"><span class="image fit"><img src="images/ZT5.jpg" alt="" /></span></div><br />
+
+						<h2><b>Pathfinding</b></h2>
+						<p>First step was setting up the project files and building an environment where the AI can navigate. For this tutorial, the Standard Assets has been used in order to create a character for the player and enemy. I chose to build a maze as the environment using a maze generator from the Asset Store. In order for the AI to work, a target had to be set. To do this I made a script that sets the target to be where the mouse points to. This game mechanics look very well for a real-time strategy game. Next, I replaced the mouse-pointing-to-target mechanics with a number of waypoints that will help the enemy find the player. Well, how the AI finds its way to the first waypoint? This is due to Unity’s NavMesh and the A* pathfinding algorithm. A* works based on Dijkstra’s graph traversal algorithm. For each of the neighbouring nodes, assuming there are weighted edges, we calculate the distance between the current node and the start node (G cost) and the distance between the current node and the end node (H cost). We add these two distances together (Fcost = Gcost + Hcost) and pick the neighbour with the lowest value (F cost) as the current node. Repeat this process until we reach the end node. </p>
+						<div class="4u"><span class="image fit"><img src="images/Pathfinding.jpg" alt="" /></span></div><br />
+						<div class="4u"><span class="image fit"><img src="images/AStar.jpg" alt="" /></span></div><br />
+						<h2><b>Finite State Machine</b></h2>
+						<p>The next step was to create a Finite State Machine which will be the decision-making algorithm for the enemy. A Finite State Machine is a series of states that the AI could be in at any given moment and transitions which tells the AI how it can reach a certain state. For example, if the enemy is detected, go in the state of chasing. The base states used in the tutorial are WANDERING, CHASING and DEAD. If the zombie can see the player, then CHASE; otherwise WANDER. Seeing the player involves some angle calculations. We give the zombie a field of view of 90 degrees and within this view we perform a raycast. If the ray hits the player then we are able to see it and we change the state from WANDERING to CHASING. </p>
+						<p>The Unity’s animator is a state machine itself. It uses states and transitions in order to decide which animation to play. After importing new assets from the Assets Store I had to rework the transitions between the animations so it fits the purpose of the game. The transitions between animations are set in the code using the first FSM so when the zombie is chasing play the RUN animation or when the zombie dies play the DEATH animation.</p>
+						<div class="4u"><span class="image fit"><img src="images/PlayerAnimator.jpg" alt="" /></span></div><br />
+						<h2><b>Spawning</b></h2>
+						<p>The last phase of the tutorial is about spawning more zombies to fight with. I made a new script which handle this. It holds references to the zombie prefab and the all the waypoints and compares the number of zombies alive with the total number of zombies. Once there are less zombies alive than the total number, Spawn a new one at a random waypoint. I don’t like the way this script is written in the tutorial. I believe it is inefficient and I have made some changes. First thing I’ve created a base for the enemies and they only spawn there. This is part of the game design. Then I’ve made a static variable which counts how many zombies are alive (when a zombie dies subtract one and add one when it is respawned). Initially the code performed a search every frame in order to see how many are still on the map. </p>
+						<div class="4u"><span class="image fit"><img src="images/Spawning.jpg" alt="" /></span></div><br />
+						<div class="4u"><span class="image fit"><img src="images/ZT2.jpg" alt="" /></span></div><br />
+						<!-- Improvements -->
+						<h2><b>Improvements</b></h2>
+						<p>The ThirdPersonCharacter script seemed very difficult to use when the camera is attached to the player. The controls were inverted and it felt unnatural so I have created a script that controls the camera. It follows the player from a top view perspective. This way it avoids clipping issues when a wall is between character and the camera. The top view camera helps the design of the game as it is easier to navigate the maze from that perspective. </p>
+
+						<p>I have made an Attack system for the enemy so I can add another state to its behaviour. When the player is in range the zombie plays the attack animation and the player takes damage. Because the zombies are able to attack now, I need a health system as well. Both the player and the enemy have a similar health system and the goal of this script is to keep track of the current health and communicate with the attack system. Every time the enemy performs an attack and the player is in range, the player takes damage. Similarly, whenever the player shoots a zombie that particular instance takes damage. </p>
+						<p>I have built two bases, one for the player and one for the zombies. The second goal of the enemies is to destroy the player’s base. The player has to survive the longest. After 5 zombies have been shot an additional zombie is spawn until the maximum of 100 units is reached. This will provide a challenge for the player while the performance of the game is kept in check. </p>
+						<div class="4u"><span class="image fit"><img src="images/ZT3.jpg" alt="" /></span></div><br />
+						<div class="4u"><span class="image fit"><img src="images/Health.jpg" alt="" /></span></div><br />
+						<p>Because the player has to protect the base and himself in the same time I gave him an aid, a small drone controlled by AI. I used the NavMesh and a state machine as well for this character. It can attack dealing significantly less damage to the enemies. The best feature of the drone is that you can tell it to follow you or hold the position. </p>
+						<p>I have created a second type of zombie that plays the role of a leader. The leader has to form a group and attack together while the tiny zombies will follow. </p>
+						<div class="4u"><span class="image fit"><img src="images/PlayerAndDrone.jpg" alt="" /></span></div><br />
+						<div class="4u"><span class="image fit"><img src="images/DroneAndZombie.jpg" alt="" /></span></div><br />
+						<!--Conclusion-->
+						<h2><b>Conclusion</b></h2>
+						<p>This tutorial helped me build my knowledge in Unity’s AI as well as building a solid piece of work form my portfolio. It was refreshing to come back to Unity and C# after a while. I have learned many AI techniques and how some algorithms work. It seemed very exciting to research on Unity’s NavMesh and understand the A* pathfinder. There is plenty of space for improvement in the AI and other aspects of this game. I believe the lessons learned from this tutorial are valuable in the future. </p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="container">
+				<ul class="icons">
+					<!--<li><a href="#" class="icon fa-linkedin"><span class="label">Twitter</span></a></li>-->
+					<li><a href="https://github.com/cristi191096" class="icon fa-github"><span class="label">Github</span></a></li>
+					<li><a href="https://www.instagram.com/zaco._.o/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="mailto:alexandrucristinelzaharia@gmail.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+				</ul>
+			</div>
+			<div class="copyright">
+				&copy; All rights reserved.
+			</div>
+		</footer>
+
+		<!-- Scripts -->
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/jquery.scrollex.min.js"></script>
+		<script src="../../js/skel.min.js"></script>
+		<script src="../../js/util.js"></script>
+		<script src="../../js/main.js"></script>
+
+	</body>
+</html>

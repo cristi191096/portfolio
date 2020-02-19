@@ -1,0 +1,85 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>AI Blog</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../../css/main.css" />
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+		<header id="header">
+			<!--<div class="logo"><a href="index.html">Hielo <span>by TEMPLATED</span></a></div>-->
+			<a href="#menu">Menu</a>
+		</header>
+
+		<!-- Nav -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="../../../index.html">Home</a></li>
+				<li><a href="../../../about.html">About</a></li>
+				<li><a href="../../../CV_AlexandruZaharia.pdf">Download CV</a></li>
+			</ul>
+		</nav>
+
+		<!-- One -->
+		<section id="One" class="wrapper style3">
+			<div class="inner">
+				<header class="align-center">
+			
+					<h2>Task 2</h2>
+				</header>
+			</div>
+		</section>
+
+		<!-- Two -->
+		<section id="two" class="wrapper style2">
+			<div class="inner">
+				<div class="box">
+					<div class="content">
+
+						<p>
+							Unity NavMesh is the pathfinding and spatial reasoning system built within the engine. There are several components inside this system such as NavMeshAgent, NaveMeshSurface and NavMeshObstacle, each of them having different roles.
+						</p>
+						<div class="4u"><span class="image fit"><img src="images/NavMesh.jpeg" alt="" /></span></div><br />
+						<p>
+							NavMeshSurface creates a walkable surface on a mesh (plane, stairs, etc) which is further used by the NavMeshAgent. I had the chance to study the code behind their navigation system, however, Unity’s API is built on layers upon layers of abstraction. It is difficult to see what happens at the core. My assumption is that this system takes in the user input such as the objects in the scene to consider, the agent properties (type, radius, height), Layers to ignore and with all this data it calculates the world bounds and builds a collection of convex polygons interconnected.
+						</p>
+						<p>The NavMeshAgent is an algorithm which displays steering behaviours in order to make the character move autonomously and realistically on the walkable surface (NavMeshSurface). The pathfinding algorithm used in this agent is A* which at the core uses Dijkstra algorithm to traverse the graph built by the NavMesh. The reason why it builds a collection of convex polygons is that it only needs to traverse one polygon and the rest are discarded if the start and destination are in the same area (graph). After choosing the shortest path, the trajectory is smoothed out by having a larger radius for each node. This agent also has collision detection implemented which determines how the AI should react when it encounters a non-stationary object. </p>
+						<p>NavMeshObstacles are basically box colliders which the NavMeshAgent can understand. It is very useful when you have objects that can be move around and the AI has to avoid them. These objects cannot be baked into the NavMeshSurface because it will leave an empty space where the agent won’t be able to walk. </p>
+						<p>I am sure there are more elaborate calculations and algorithms at the core of this system, and this is just an overview of what I believe the Unity Navigation system represents. </p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="container">
+				<ul class="icons">
+					<!--<li><a href="#" class="icon fa-linkedin"><span class="label">Twitter</span></a></li>-->
+					<li><a href="https://github.com/cristi191096" class="icon fa-github"><span class="label">Github</span></a></li>
+					<li><a href="https://www.instagram.com/zaco._.o/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="mailto:alexandrucristinelzaharia@gmail.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+				</ul>
+			</div>
+			<div class="copyright">
+				&copy; All rights reserved.
+			</div>
+		</footer>
+
+		<!-- Scripts -->
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/jquery.scrollex.min.js"></script>
+		<script src="../../js/skel.min.js"></script>
+		<script src="../../js/util.js"></script>
+		<script src="../../js/main.js"></script>
+
+	</body>
+</html>
