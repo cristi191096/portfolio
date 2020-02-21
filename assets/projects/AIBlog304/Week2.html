@@ -54,6 +54,12 @@
 						<p>The NavMeshAgent is an algorithm which displays steering behaviours in order to make the character move autonomously and realistically on the walkable surface (NavMeshSurface). The pathfinding algorithm used in this agent is A* which at the core uses Dijkstra algorithm to traverse the graph built by the NavMesh. The reason why it builds a collection of convex polygons is that it only needs to traverse one polygon and the rest are discarded if the start and destination are in the same area (graph). After choosing the shortest path, the trajectory is smoothed out by having a larger radius for each node. This agent also has collision detection implemented which determines how the AI should react when it encounters a non-stationary object. </p>
 						<p>NavMeshObstacles are basically box colliders which the NavMeshAgent can understand. It is very useful when you have objects that can be move around and the AI has to avoid them. These objects cannot be baked into the NavMeshSurface because it will leave an empty space where the agent won’t be able to walk. </p>
 						<p>I am sure there are more elaborate calculations and algorithms at the core of this system, and this is just an overview of what I believe the Unity Navigation system represents. </p>
+						<h2><b>References</b></h2>
+						<ul>
+							<li>Technologies, U. (2020). Unity - Manual: Navigation System in Unity. [online] Docs.unity3d.com. Available at: https://docs.unity3d.com/Manual/nav-NavigationSystem.html </li>
+							<li>Technologies, U. (2020). Unity - Manual: Inner Workings of the Navigation System. [online] Docs.unity3d.com. Available at: https://docs.unity3d.com/Manual/nav-InnerWorkings.html </li>
+							<li>Technologies, U. (2020). Unity - Manual: Building a NavMesh. [online] Docs.unity3d.com. Available at: https://docs.unity3d.com/Manual/nav-BuildingNavMesh.html </li>
+						</ul>
 					</div>
 				</div>
 			</div>
