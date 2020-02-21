@@ -5,12 +5,12 @@
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
 <html>
-	<head>
-		<title>Pretty Engine</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="../../css/main.css" />
-	</head>
+<head>
+	<title>AI Blog</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="../../css/main.css" />
+</head>
 	<body class="subpage">
 
 		<!-- Header -->
@@ -32,8 +32,8 @@
 		<section id="One" class="wrapper style3">
 			<div class="inner">
 				<header class="align-center">
-					<p>Cross-platform game engine</p>
-					<h2>Pretty Engine</h2>
+					
+					<h2>Task 4</h2>
 				</header>
 			</div>
 		</section>
@@ -43,26 +43,25 @@
 			<div class="inner">
 				<div class="box">
 					<div class="content">
-						<!--<header class="align-center">
-						<p>maecenas sapien feugiat ex purus</p>
-						<h2>Lorem ipsum dolor</h2>
-					</header>-->
+
 						<p>
-							Pretty Engine is a modularised game engine written in C++. The user is capable of building multiplayer games with ease. The main features of the engine are: Entity-Component system ( the modularisation of the engine, it helps a great deal when writting an application ), Layering system allows
-							allows grouping entities and rendering them differently, 2D batch rendering ( very performant, the
-							future plan is to use this renderer for writting a particle system ), multiple randering APIs ( only
-							supports OpenGL at the moment, however, the architecture allows to easily incorporate other APIs.
-							DirectX and Vulkan are the next checkpoint ), data-driven level management using xml and 3D
-							asset importing using Assimp, Level Editor ( GUI made with dear ImGUI ), build system made with
-							premake (lua language), physics, audio and networking systems.
+							For the second coursework I have considered some advanced techniques such as reinforcement learning and neural networks. It is a very interesting concept which I would like to explore more in the future. I have decided to not do any sort of machine learning for several reasons. First, it takes a long time to train and it requires a tremendous amount of data. Second, even if the training is successful the trained model needs to be saved and used in such a way that the game understands it. The outputs of a neural network are just numbers which could represent anything. Interpreting these numbers may become challenging. Lastly, there is no control over how smart the AI is which may lead to game design problems.
 						</p>
+						<div class="4u"><span class="image fit"><img src="images/MarioRL.jpg" alt="" /></span></div><br />
 						<p>
-							Future milestones of the project: Make a procedural generation project and include some functionality needed in the engine, (GPU) raytraced rendering for quality renders, AI module that allows
-							you to perform machine learning as well as traditional AI, switch to NVIDIA PhysX engine, better
-							networking system and better resource management
+							Due to all these factors I have changed my idea and decided to implement a flocking mechanism alongside a finite state machine. Boids are AI instances which mimic the flight of the birds. The way the algorithm works is by having a set of rules which must be followed as much as possible. There are three base rules:
 						</p>
-						<a href="https://github.com/cristi191096/Pretty_Engine" class="button icon fa-github"> Source Code</a>
-						<a href="https://github.com/cristi191096/Pretty_Engine/archive/master.zip" class="button icon fa-download"> Download</a>
+						<ol>
+							<li><b>Separation: </b> Each instance attempts to maintain a reasonable amount of distance between itself and any nearby entities, to prevent overcrowding.</li>
+							<li><b>Alignment:</b> Birds try to change their position so that it corresponds with the average alignment of other nearby birds.</li>
+							<li><b>Cohesion:</b> Every bird attempts to move towards the average position of other nearby birds.</li>
+						</ol>
+						<div class="4u"><span class="image fit"><img src="images/BoidsRules.jpg" alt="" /></span></div>
+						<p>Besides these rules, the algorithm is open to additional goal that benefits the game design. For example, flying towards a certain position or avoid obstacles. I have chosen this AI techniques because it gives the characters intelligent behaviours without involving the process of learning discussed previously. It works as instructed in the code; thus, it is easier to debug. Although I am happy to pursue more challenging tasks, I am going to avoid algorithms that present a risk to my coursework due to the time limit. </p>
+						<p>The game design will revolve around this idea of boids. It could be that the player controls the flock of birds and has to gather as many as possible while avoiding predators or the player controls the predator instead. It could work with fish or even geometric forms. The predator is where the finite state machine comes into play. </p>
+						<p>The state machine will control the hunting behaviour with the following states: STALK, PURSUE, ATTACK. I may add a variable which is the level of awareness that determines the probability of catching the prey. </p>
+						<p>I believe this game has the potential to showcase some AI behaviours and the flocking simulation shows realistic movements. </p>
+
 					</div>
 				</div>
 			</div>
