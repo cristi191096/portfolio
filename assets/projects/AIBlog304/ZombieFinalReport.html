@@ -44,6 +44,7 @@
 				<div class="box">
 					<div class="content">
 						<!--Introduction-->
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/KYc5l4vX8zw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 						<h2><b>Introduction</b></h2>
 						<p>The zombie shooter tutorial contains a series of exercises which are meant to build a very basic action game with AI implementations. This report will explain the underlying principles of the AI techniques used and further improvements made to the initial stage of the game. </p>
@@ -72,7 +73,7 @@
 						<p>I have built two bases, one for the player and one for the zombies. The second goal of the enemies is to destroy the player’s base. The player has to survive the longest. After 5 zombies have been shot an additional zombie is spawn until the maximum of 100 units is reached. This will provide a challenge for the player while the performance of the game is kept in check. </p>
 						<div class="4u"><span class="image fit"><img src="images/ZT3.jpg" alt="" /></span></div><br />
 						<div class="4u"><span class="image fit"><img src="images/Health.jpg" alt="" /></span></div><br />
-						<p>Because the player has to protect the base and himself in the same time I gave him an aid, a small drone controlled by AI. I used the NavMesh and a state machine as well for this character. It can attack dealing significantly less damage to the enemies. The best feature of the drone is that you can tell it to follow you or hold the position. </p>
+						<p>Because the player has to protect the base and himself in the same time I gave him an aid, a small drone controlled by AI. I used the NavMesh and a state machine as well for this character. It can attack dealing significantly less damage to the enemies. The best feature of the drone is that you can tell it to follow you or hold the position. The drone has a special ability. When the player health drops below 40 it will throw a healing pod on the map which can, then, be collected. </p>
 						<p>I have created a second type of zombie that plays the role of a leader. The leader has to form a group and attack together while the tiny zombies will follow. Spawning the zombies uses the Markov decision so the leader zombies have a 20% chance of spawning. </p>
 						<div class="4u"><span class="image fit"><img src="images/PlayerAndDrone.jpg" alt="" /></span></div><br />
 						<div class="4u"><span class="image fit"><img src="images/DroneAndZombie.jpg" alt="" /></span></div><br />
