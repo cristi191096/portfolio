@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Flocky Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+        var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Web.json", { onProgress: UnityProgress });
+    </script>
+</head>
+<body>
+    <header id="header">
+        <a href="#menu">Menu</a>
+    </header>
+
+    <!-- Nav -->
+    <nav id="menu">
+        <ul class="links">
+            <li><a href="../../../index.html">Home</a></li>
+            <li><a href="../../../about.html">About</a></li>
+            <li><a href="../../../CV_AlexandruZaharia.pdf">Download CV</a></li>
+        </ul>
+    </nav>
+
+    <!-- One -->
+    <section id="One" class="wrapper style3">
+        <div class="inner">
+            <header class="align-center">
+                <p>A game based on the flocking behaviour</p>
+                <h2>Flocky</h2>
+            </header>
+        </div>
+    </section>
+
+    <section id="two" class="wrapper style2">
+        <div class="inner">
+            <div class="box">
+                <div class="content align-center">
+                    <iframe allow="geolocation; microphone; camera; midi; encrypted-media;" width="980" height="650" src="index.html" allowfullscreen="allowfullscreen" class="responsive-frame"></iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <ul class="icons">
+                <!--<li><a href="#" class="icon fa-linkedin"><span class="label">Twitter</span></a></li>-->
+                <li><a href="https://github.com/cristi191096" class="icon fa-github"><span class="label">Github</span></a></li>
+                <li><a href="https://www.instagram.com/zaco._.o/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="mailto:alexandrucristinelzaharia@gmail.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+            </ul>
+        </div>
+        <div class="copyright">
+            &copy; All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/jquery.scrollex.min.js"></script>
+    <script src="../../js/skel.min.js"></script>
+    <script src="../../js/util.js"></script>
+    <script src="../../js/main.js"></script>
+
+</body>
+</html>
